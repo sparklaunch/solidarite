@@ -15,7 +15,7 @@ const SearchResult = ({ currentTab, searchInput }: SearchResultProps) => {
         ["searchResults"],
         async ({ pageParam = 0 }) => {
             const response = await axios.get(
-                `https://recruit-api.yonple.com/recruit/778382/${currentTab}-posts?search=${searchInput}&page=${pageParam}`
+                `https://recruit-api.yonple.com/recruit/${process.env.REACT_APP_TOKEN}/${currentTab}-posts?search=${searchInput}&page=${pageParam}`
             );
             const result = response.data;
             return {

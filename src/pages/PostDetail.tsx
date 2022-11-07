@@ -11,7 +11,7 @@ const PostDetail = () => {
     const postID = postToken?.slice(1);
     const { data, isLoading, error } = useQuery(["postDetail"], () => {
         return axios.get(
-            `https://recruit-api.yonple.com/recruit/778382/${type}-posts/${postID}`
+            `https://recruit-api.yonple.com/recruit/${process.env.REACT_APP_TOKEN}/${type}-posts/${postID}`
         );
     });
     if (isLoading) {

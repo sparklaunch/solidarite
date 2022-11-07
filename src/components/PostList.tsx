@@ -13,7 +13,9 @@ const PostList = ({ currentTab }: PostListProps) => {
         ["posts"],
         async ({ pageParam = 0 }) => {
             const response = await axios.get(
-                `https://recruit-api.yonple.com/recruit/778382/${currentTab.toLowerCase()}-posts?page=${pageParam}`
+                `https://recruit-api.yonple.com/recruit/${
+                    process.env.REACT_APP_TOKEN
+                }/${currentTab.toLowerCase()}-posts?page=${pageParam}`
             );
             const result = response.data;
             return {
