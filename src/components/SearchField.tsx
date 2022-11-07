@@ -1,7 +1,18 @@
-import { useState } from "react";
+import { ChangeEvent, useCallback, useState } from "react";
+import debouncer from "../utils/debouncer";
 
 const SearchField = () => {
     const [input, setInput] = useState("");
+    const printValue = useCallback(
+        debouncer((value) => {
+            console.dir(value);
+        }, 150),
+        []
+    );
+    const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+        printValue(event.target.value);
+        setInput(event.target.value);
+    };
     return (
         <div className="my-5">
             <input
@@ -9,9 +20,7 @@ const SearchField = () => {
                 type="text"
                 placeholder="검색어를 입력하세요"
                 value={input}
-                onChange={(event) => {
-                    setInput(event.target.value);
-                }}
+                onChange={changeHandler}
             />
         </div>
     );

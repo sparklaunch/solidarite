@@ -6,10 +6,9 @@ import Page from "../utils/Page";
 
 interface PostListProps {
     currentTab: string;
-    setCurrentTab: (tab: string) => void;
 }
 
-const PostList = ({ currentTab, setCurrentTab }: PostListProps) => {
+const PostList = ({ currentTab }: PostListProps) => {
     const { data, error, isLoading, fetchNextPage, refetch } = useInfiniteQuery(
         ["posts"],
         async ({ pageParam = 0 }) => {
