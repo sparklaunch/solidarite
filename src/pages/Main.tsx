@@ -1,13 +1,10 @@
 import Layout from "../components/Layout";
+import Header from "../components/Header";
 
 const Main = () => {
     return (
         <Layout>
-            <div>
-                <h1 className="text-5xl text-center">
-                    솔리다리테 개발자 사전 과제
-                </h1>
-            </div>
+            <Header />
         </Layout>
     );
 };
