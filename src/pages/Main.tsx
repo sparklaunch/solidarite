@@ -17,7 +17,7 @@ const Main = () => {
             {input.length === 0 ? (
                 <PostList currentTab={currentTab} />
             ) : (
-                <SearchResult />
+                <SearchResult input={input} currentTab={currentTab} />
             )}
         </Layout>
     );

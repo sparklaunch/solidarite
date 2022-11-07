@@ -23,7 +23,7 @@ const PostList = ({ currentTab }: PostListProps) => {
             return {
                 result,
                 nextPage: pageParam + 1,
-                isLast: result.isLast,
+                isLast: result.isLast
             };
         },
         {
@@ -35,7 +35,7 @@ const PostList = ({ currentTab }: PostListProps) => {
             refetchOnWindowFocus: true,
             refetchOnMount: true,
             refetchOnReconnect: true,
-            retry: 1,
+            retry: 1
         }
     );
     const [scroll, setScroll] = useState(0);
