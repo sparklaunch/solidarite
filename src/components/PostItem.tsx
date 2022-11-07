@@ -8,8 +8,6 @@ interface PostProps {
 const PostItem = ({ post }: PostProps) => {
     const navigator = useNavigate();
     const clickHandler = () => {
-        const currentScroll = window.scrollY.toString();
-        localStorage.setItem("previousScroll", currentScroll);
         navigator(`/posts/${post.type}${post.id}`);
     };
     return (

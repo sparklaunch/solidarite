@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { useQuery } from "react-query";
 import axios from "axios";
 import Post from "../utils/Post";
@@ -6,6 +6,7 @@ import Layout from "../components/Layout";
 
 const PostDetail = () => {
     const { postToken } = useParams();
+    const navigator = useNavigate();
     const type = postToken?.slice(0, 1);
     const postID = postToken?.slice(1);
     const { data, isLoading, error } = useQuery(["postDetail"], () => {
@@ -32,7 +33,12 @@ const PostDetail = () => {
                 </div>
             </div>
             <div>
-                <button className="bg-blue-500 rounded-md p-2 px-5 text-white hover:brightness-125">
+                <button
+                    className="bg-blue-500 rounded-md p-2 px-5 text-white hover:brightness-125"
+                    onClick={() => {
+                        navigator(-1);
+                    }}
+                >
                     뒤로 가기
                 </button>
             </div>
