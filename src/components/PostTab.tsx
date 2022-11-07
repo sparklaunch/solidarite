@@ -1,5 +1,4 @@
 import PostTabItem from "./PostTabItem";
-import { useEffect } from "react";
 
 interface PostTabProps {
     currentTab: string;
@@ -7,14 +6,6 @@ interface PostTabProps {
 }
 
 const PostTab = ({ currentTab, setCurrentTab }: PostTabProps) => {
-    useEffect(() => {
-        const previousTab = sessionStorage.getItem("previousTab");
-        if (previousTab) {
-            setCurrentTab(previousTab);
-        } else {
-            setCurrentTab("a");
-        }
-    }, []);
     return (
         <div className="flex mb-2">
             <PostTabItem

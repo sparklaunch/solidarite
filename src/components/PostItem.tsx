@@ -8,7 +8,6 @@ interface PostProps {
 const PostItem = ({ post }: PostProps) => {
     const navigator = useNavigate();
     const clickHandler = () => {
-        sessionStorage.setItem("previousTab", post.type);
         navigator(`/posts/${post.type}${post.id}`);
     };
     return (
