@@ -1,13 +1,9 @@
 import React from "react";
-import Main from "./pages/Main";
 import "./App.css";
+import Router from "./shared/Router";
 
 const App = () => {
-    return (
-        <div className="App">
-            <Main />
-        </div>
-    );
+    return <Router />;
 };
 
 export default App;
