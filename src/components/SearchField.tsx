@@ -1,8 +1,12 @@
-import { ChangeEvent, useCallback, useState } from "react";
+import { ChangeEvent, useCallback } from "react";
 import debouncer from "../utils/debouncer";
 
-const SearchField = () => {
-    const [input, setInput] = useState("");
+interface SearchFieldProps {
+    input: string;
+    setInput: (input: string) => void;
+}
+
+const SearchField = ({ input, setInput }: SearchFieldProps) => {
     const printValue = useCallback(
         debouncer((value) => {
             console.dir(value);
