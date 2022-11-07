@@ -20,7 +20,7 @@ const PostList = () => {
     }
     const posts = data?.pages[0].data as Post[];
     return (
-        <div>
+        <div className="border-2 border-gray-100 rounded-md p-5 grid gap-5">
             {posts.map((post) => {
                 return <PostItem post={post} key={post.id} />;
             })}

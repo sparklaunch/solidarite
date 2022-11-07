@@ -2,7 +2,7 @@ import Post from "../utils/Post";
 
 const PostItem = ({ post }: { post: Post }) => {
     return (
-        <div className="my-5">
+        <div>
             <div className="flex">
                 <p className="mr-1 text-blue-600">{post.id}.</p>
                 <p>{post.title}</p>
