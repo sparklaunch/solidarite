@@ -10,12 +10,16 @@ interface Page {
     result: Post[];
 }
 
-const PostList = () => {
-    const { data, error, isLoading, fetchNextPage } = useInfiniteQuery(
+interface PostListProps {
+    currentTab: string;
+}
+
+const PostList = ({ currentTab }: PostListProps) => {
+    const { data, error, isLoading, fetchNextPage, refetch } = useInfiniteQuery(
         ["posts"],
         async ({ pageParam = 0 }) => {
             const response = await axios.get(
-                `https://recruit-api.yonple.com/recruit/778382/a-posts?page=${pageParam}`
+                `https://recruit-api.yonple.com/recruit/778382/${currentTab.toLowerCase()}-posts?page=${pageParam}`
             );
             const result = response.data;
             return {
@@ -30,8 +34,8 @@ const PostList = () => {
                     return lastPage.nextPage;
                 }
             },
-            refetchOnWindowFocus: false,
-            refetchOnMount: false,
+            refetchOnWindowFocus: true,
+            refetchOnMount: true,
             refetchOnReconnect: true,
             retry: 1,
         }
@@ -58,6 +62,9 @@ const PostList = () => {
             fetchNextPage();
         }
     }, [scroll]);
+    useEffect(() => {
+        refetch();
+    }, [currentTab]);
     if (isLoading) {
         return <div>Loading...</div>;
     }

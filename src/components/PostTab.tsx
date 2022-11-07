@@ -1,8 +1,11 @@
 import PostTabItem from "./PostTabItem";
-import { useState } from "react";
 
-const PostTab = () => {
-    const [currentTab, setCurrentTab] = useState("A");
+interface PostTabProps {
+    currentTab: string;
+    setCurrentTab: (tabID: string) => void;
+}
+
+const PostTab = ({ currentTab, setCurrentTab }: PostTabProps) => {
     return (
         <div className="flex">
             <PostTabItem
