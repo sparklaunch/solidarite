@@ -1,5 +1,7 @@
 import { ChangeEvent, useCallback } from "react";
 import debouncer from "../utils/debouncer";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 
 interface SearchFieldProps {
     input: string;
@@ -19,9 +21,19 @@ const SearchField = ({ input, setInput, setSearchInput }: SearchFieldProps) => {
         inputDebouncer(event.target.value);
     };
     return (
-        <div className="my-5">
+        <div className="my-5 w-[300px] mx-auto relative">
+            <label
+                htmlFor="search-field"
+                className="absolute top-1/2 left-3 translate-y-[-50%]"
+            >
+                <FontAwesomeIcon
+                    icon={solid("magnifying-glass")}
+                    color={"gray"}
+                />
+            </label>
             <input
-                className="border-2 border-gray-300 rounded-md p-2 pl-5 w-[300px] mx-auto block"
+                id="search-field"
+                className="border-2 border-gray-300 rounded-md p-2 pl-8 block w-full"
                 type="text"
                 placeholder="검색어를 입력하세요"
                 value={input}
