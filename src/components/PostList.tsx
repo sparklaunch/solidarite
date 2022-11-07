@@ -79,7 +79,7 @@ const PostList = ({ currentTab }: PostListProps) => {
         }
     }
     return (
-        <div className="border-2 border-gray-100 rounded-md p-5 grid gap-5 mb-5">
+        <div className="border-2 border-gray-100 rounded-md p-3 mb-5">
             {posts.map((post) => {
                 return <PostItem post={post} key={post.id} />;
             })}

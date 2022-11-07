@@ -6,7 +6,7 @@ interface PostProps {
 
 const PostItem = ({ post }: PostProps) => {
     return (
-        <div>
+        <div className="cursor-pointer hover:bg-gray-100 p-5 rounded-md">
             <div className="flex">
                 <p className="mr-1 text-blue-600">{post.id}.</p>
                 <p>{post.title}</p>
