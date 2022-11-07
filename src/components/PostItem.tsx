@@ -1,6 +1,10 @@
 import Post from "../utils/Post";
 
-const PostItem = ({ post }: { post: Post }) => {
+interface PostProps {
+    post: Post;
+}
+
+const PostItem = ({ post }: PostProps) => {
     return (
         <div>
             <div className="flex">
