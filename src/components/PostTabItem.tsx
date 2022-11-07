@@ -14,7 +14,7 @@ const PostTabItem = ({ tabID, isActive, setCurrentTab }: PostTabItemProps) => {
             onClick={tabClickHandler}
         >
             <p className={isActive ? "text-blue-500" : "text-black"}>
-                {tabID} Posts
+                {tabID.toUpperCase()} Posts
             </p>
         </div>
     );

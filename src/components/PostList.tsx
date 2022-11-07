@@ -6,15 +6,20 @@ import Page from "../utils/Page";
 
 interface PostListProps {
     currentTab: string;
+    setCurrentTab: (tab: string) => void;
 }
 
-const PostList = ({ currentTab }: PostListProps) => {
+const PostList = ({ currentTab, setCurrentTab }: PostListProps) => {
     const { data, error, isLoading, fetchNextPage, refetch } = useInfiniteQuery(
         ["posts"],
         async ({ pageParam = 0 }) => {
+            const previousTab = sessionStorage.getItem("previousTab");
             const response = await axios.get(
-                `https://recruit-api.yonple.com/recruit/778382/${currentTab.toLowerCase()}-posts?page=${pageParam}`
+                `https://recruit-api.yonple.com/recruit/778382/${
+                    previousTab || currentTab.toLowerCase()
+                }-posts?page=${pageParam}`
             );
+            sessionStorage.removeItem("previousTab");
             const result = response.data;
             return {
                 result,
@@ -34,7 +39,6 @@ const PostList = ({ currentTab }: PostListProps) => {
             retry: 1,
         }
     );
-    const [currentPage, setCurrentPage] = useState(0);
     const [scroll, setScroll] = useState(0);
     const handleScroll = () => {
         setScroll(window.scrollY);

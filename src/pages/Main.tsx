@@ -12,7 +12,7 @@ const Main = () => {
             <Header />
             <SearchField />
             <PostTab currentTab={currentTab} setCurrentTab={setCurrentTab} />
-            <PostList currentTab={currentTab} />
+            <PostList currentTab={currentTab} setCurrentTab={setCurrentTab} />
         </Layout>
     );
 };
