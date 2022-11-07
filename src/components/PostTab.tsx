@@ -7,7 +7,7 @@ interface PostTabProps {
 
 const PostTab = ({ currentTab, setCurrentTab }: PostTabProps) => {
     return (
-        <div className="flex">
+        <div className="flex mb-2">
             <PostTabItem
                 tabID="A"
                 isActive={currentTab === "A"}
