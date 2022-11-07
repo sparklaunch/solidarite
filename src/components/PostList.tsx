@@ -1,14 +1,8 @@
 import { useInfiniteQuery } from "react-query";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Post from "../utils/Post";
 import PostItem from "./PostItem";
-
-interface Page {
-    isLast: boolean;
-    nextPage: number;
-    result: Post[];
-}
+import Page from "../utils/Page";
 
 interface PostListProps {
     currentTab: string;

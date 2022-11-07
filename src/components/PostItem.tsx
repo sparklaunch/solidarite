@@ -1,12 +1,16 @@
 import Post from "../utils/Post";
+import { useNavigate } from "react-router";
 
 interface PostProps {
     post: Post;
 }
 
 const PostItem = ({ post }: PostProps) => {
+    const navigator = useNavigate();
     const clickHandler = () => {
-        const currentScroll = window.scrollY;
+        const currentScroll = window.scrollY.toString();
+        localStorage.setItem("previousScroll", currentScroll);
+        navigator(`/posts/${post.type}${post.id}`);
     };
     return (
         <div
