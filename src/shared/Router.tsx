@@ -6,7 +6,7 @@ import { useState } from "react";
 
 const Router = () => {
     const [input, setInput] = useState("");
-    const [currentTab, setCurrentTab] = useState("A");
+    const [currentTab, setCurrentTab] = useState("a");
     return (
         <BrowserRouter>
             <Routes>
