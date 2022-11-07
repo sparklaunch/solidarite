@@ -10,18 +10,34 @@ interface MainProps {
     setInput: (input: string) => void;
     currentTab: string;
     setCurrentTab: (tab: string) => void;
+    searchInput: string;
+    setSearchInput: (input: string) => void;
 }
 
-const Main = ({ input, setInput, currentTab, setCurrentTab }: MainProps) => {
+const Main = ({
+    input,
+    setInput,
+    currentTab,
+    setCurrentTab,
+    setSearchInput,
+    searchInput
+}: MainProps) => {
     return (
         <Layout>
             <Header />
-            <SearchField input={input} setInput={setInput} />
+            <SearchField
+                input={input}
+                setInput={setInput}
+                setSearchInput={setSearchInput}
+            />
             <PostTab currentTab={currentTab} setCurrentTab={setCurrentTab} />
             {input.length === 0 ? (
                 <PostList currentTab={currentTab} />
             ) : (
-                <SearchResult input={input} currentTab={currentTab} />
+                <SearchResult
+                    currentTab={currentTab}
+                    searchInput={searchInput}
+                />
             )}
         </Layout>
     );

@@ -4,18 +4,19 @@ import debouncer from "../utils/debouncer";
 interface SearchFieldProps {
     input: string;
     setInput: (input: string) => void;
+    setSearchInput: (input: string) => void;
 }
 
-const SearchField = ({ input, setInput }: SearchFieldProps) => {
-    const printValue = useCallback(
+const SearchField = ({ input, setInput, setSearchInput }: SearchFieldProps) => {
+    const inputDebouncer = useCallback(
         debouncer((value) => {
-            console.dir(value);
+            setSearchInput(value);
         }, 150),
         []
     );
     const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-        printValue(event.target.value);
         setInput(event.target.value);
+        inputDebouncer(event.target.value);
     };
     return (
         <div className="my-5">

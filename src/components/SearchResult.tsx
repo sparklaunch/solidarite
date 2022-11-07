@@ -6,16 +6,16 @@ import Post from "../utils/Post";
 import PostItem from "./PostItem";
 
 interface SearchResultProps {
-    input: string;
     currentTab: string;
+    searchInput: string;
 }
 
-const SearchResult = ({ input, currentTab }: SearchResultProps) => {
+const SearchResult = ({ currentTab, searchInput }: SearchResultProps) => {
     const { data, isLoading, error, fetchNextPage, refetch } = useInfiniteQuery(
         ["searchResults"],
         async ({ pageParam = 0 }) => {
             const response = await axios.get(
-                `https://recruit-api.yonple.com/recruit/778382/${currentTab}-posts?search=${input}&page=${pageParam}`
+                `https://recruit-api.yonple.com/recruit/778382/${currentTab}-posts?search=${searchInput}&page=${pageParam}`
             );
             const result = response.data;
             return {
@@ -59,7 +59,7 @@ const SearchResult = ({ input, currentTab }: SearchResultProps) => {
     }, [scroll]);
     useEffect(() => {
         refetch();
-    }, [input]);
+    }, [searchInput]);
     if (isLoading) {
         return <div>Loading...</div>;
     }

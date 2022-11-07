@@ -5,6 +5,7 @@ import PostDetail from "../pages/PostDetail";
 import { useState } from "react";
 
 const Router = () => {
+    const [searchInput, setSearchInput] = useState("");
     const [input, setInput] = useState("");
     const [currentTab, setCurrentTab] = useState("a");
     return (
@@ -18,6 +19,8 @@ const Router = () => {
                             setInput={setInput}
                             currentTab={currentTab}
                             setCurrentTab={setCurrentTab}
+                            searchInput={searchInput}
+                            setSearchInput={setSearchInput}
                         />
                     }
                 />
@@ -29,6 +32,8 @@ const Router = () => {
                             setInput={setInput}
                             currentTab={currentTab}
                             setCurrentTab={setCurrentTab}
+                            searchInput={searchInput}
+                            setSearchInput={setSearchInput}
                         />
                     }
                 />
