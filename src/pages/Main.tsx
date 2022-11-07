@@ -3,12 +3,16 @@ import Header from "../components/Header";
 import SearchField from "../components/SearchField";
 import PostTab from "../components/PostTab";
 import PostList from "../components/PostList";
-import { useState } from "react";
 import SearchResult from "../components/SearchResult";
 
-const Main = () => {
-    const [currentTab, setCurrentTab] = useState("A");
-    const [input, setInput] = useState("");
+interface MainProps {
+    input: string;
+    setInput: (input: string) => void;
+    currentTab: string;
+    setCurrentTab: (tab: string) => void;
+}
+
+const Main = ({ input, setInput, currentTab, setCurrentTab }: MainProps) => {
     return (
         <Layout>
             <Header />
